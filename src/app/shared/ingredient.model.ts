@@ -1,5 +1,6 @@
-export class Ingredient {
-    constructor(public name:string, public amount:number){
 
-    }
+//* Model Ingredient -> Blueprint
+export class Ingredient {
+  constructor(public name: string, public amount: number) {}
 }
+
