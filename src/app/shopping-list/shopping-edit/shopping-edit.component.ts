@@ -3,12 +3,12 @@ import {
   OnInit,
   ElementRef,
   ViewChild,
-  EventEmitter,
-  Output
+  // EventEmitter,
+  // Output
 } from '@angular/core';
 
 import { Ingredient } from '../../shared/ingredient.model';
-
+import {ShoppingListService} from '../shopping-list.service'
 @Component({
   selector: 'app-shopping-edit',
   templateUrl: './shopping-edit.component.html',
@@ -17,9 +17,9 @@ import { Ingredient } from '../../shared/ingredient.model';
 export class ShoppingEditComponent implements OnInit {
   @ViewChild('nameInput', { static: false }) nameInputRef: ElementRef; //* คล้ายๆ useRef React
   @ViewChild('amountInput', { static: false }) amountInputRef: ElementRef; //* คล้ายๆ useRef React
-  @Output() ingredientAdded = new EventEmitter<Ingredient>(); //* ส่งออก output event
+  // @Output() ingredientAdded = new EventEmitter<Ingredient>(); //* ส่งออก output event
 
-  constructor() { }
+  constructor(private slService:ShoppingListService) { }
 
   ngOnInit() {
   }
@@ -32,7 +32,8 @@ export class ShoppingEditComponent implements OnInit {
     //* assign Name Amount
     const newIngredient = new Ingredient(ingName, ingAmount); 
     //* assign event
-    this.ingredientAdded.emit(newIngredient);
+    // this.ingredientAdded.emit(newIngredient);
+    this.slService.addIngredient(newIngredient);
   }
 
 }
