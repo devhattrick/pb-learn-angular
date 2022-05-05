@@ -2,10 +2,12 @@ import { EventEmitter, Injectable } from '@angular/core';
 import { Recipe } from './recipe.model';
 import {Ingredient} from '../shared/ingredient.model';
 import {ShoppingListService} from '../shopping-list/shopping-list.service';
+// import { Subject } from 'rxjs'; //! ObsProject
+
 @Injectable() 
 //* การใช้ Decorator @Injectable นั้น เป็นการบอก Injector ว่า Class นี้สามารถถูก Inject ได้ (ใช้ Dependency Injection ได้นั้นเอง) 
 export class RecipeService {
-  recipeSelected = new EventEmitter<Recipe>();
+  // recipeSelected = new Subject<Recipe>();
   //* mockup Data
   private recipes: Recipe[] = [
     new Recipe(
