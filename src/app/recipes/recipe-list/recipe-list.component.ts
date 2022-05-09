@@ -32,7 +32,7 @@ export class RecipeListComponent implements OnInit, OnDestroy {
   onNewRecipe() {
     this.router.navigate(['new'], {relativeTo: this.route});
   }
-
+  //* ล้่างค่า ก่อน เปลี่ยน path
   ngOnDestroy() {
     this.subscription.unsubscribe();
   }
