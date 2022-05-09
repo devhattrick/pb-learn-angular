@@ -17,7 +17,7 @@ export class DataStorageService {
        })
     }
     fetchRecipes(){
-        this.http.get<Recipe[]>('https://ng-course-recipe-book-f2f71-default-rtdb.firebaseio.com/recipes.json')
+        return this.http.get<Recipe[]>('https://ng-course-recipe-book-f2f71-default-rtdb.firebaseio.com/recipes.json')
         .pipe(map(recipes=>{
             return recipes.map(recipe=>{
                 // console.log('>check',ingredients:recipe.ingredients ? recipe.ingredients:[])

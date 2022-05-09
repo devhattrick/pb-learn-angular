@@ -12,7 +12,7 @@ export class RecipeResolverService implements Resolve<Recipe[]>{
     constructor(private dataStorageService:DataStorageService){
 
     }
-
+    //! งงตรงนี้แหละ
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot):any {
         return this.dataStorageService.fetchRecipes();
     }
