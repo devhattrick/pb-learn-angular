@@ -24,7 +24,7 @@ export class AuthComponent {
     if (!form.valid) {
       return;
     }
-    const email = form.value.email;
+    const email = form.value.email;  //* get input value
     const password = form.value.password;
 
     let authObs: Observable<AuthResponseData>;
@@ -36,7 +36,8 @@ export class AuthComponent {
     } else {
       authObs = this.authService.signup(email, password);
     }
-
+    
+    //? solve error
     authObs.subscribe(
       resData => {
         console.log(resData);

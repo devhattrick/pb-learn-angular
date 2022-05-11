@@ -15,10 +15,11 @@ export class RecipesResolverService implements Resolve<Recipe[]> {
     private dataStorageService: DataStorageService,
     private recipesService: RecipeService
   ) {}
-
+  //! ดึงข้อมูล ก่อน render หน้า
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
     const recipes = this.recipesService.getRecipes();
 
+    //* เช็คว่า เรามี recipes ไม่ ถ้าไม่มีให้ fetch แต่ถ้ามีอยู่แล้วให้ return list
     if (recipes.length === 0) {
       return this.dataStorageService.fetchRecipes();
     } else {

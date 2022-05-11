@@ -27,11 +27,12 @@ export class DataStorageService {
       });
   }
 
+
+  //* ดึง data จาก firebase ด้วย method get
   fetchRecipes() {
     return this.http
       .get<Recipe[]>(
         'https://ng-course-recipe-book-f2f71-default-rtdb.firebaseio.com/recipes.json'
-
       )
       .pipe(
         map(recipes => {

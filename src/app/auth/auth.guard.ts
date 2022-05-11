@@ -15,6 +15,7 @@ import { AuthService } from './auth.service';
 export class AuthGuard implements CanActivate {
   constructor(private authService: AuthService, private router: Router) {}
 
+  //* กำหนด การเข้าถึง path -> canActivate
   canActivate(
     route: ActivatedRouteSnapshot,
     router: RouterStateSnapshot
@@ -24,6 +25,7 @@ export class AuthGuard implements CanActivate {
     | Promise<boolean | UrlTree>
     | Observable<boolean | UrlTree> {
     return this.authService.user.pipe(
+
       take(1),
       map(user => {
         

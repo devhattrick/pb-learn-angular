@@ -23,11 +23,18 @@ export class RecipeService {
   //     [new Ingredient('Buns', 2), new Ingredient('Meat', 1)]
   //   )
   // ];
+
+  
+   //! ตัวแทนหมู่บ้าน
   private recipes: Recipe[] = [];
 
   constructor(private slService: ShoppingListService) {}
 
   setRecipes(recipes: Recipe[]) {
+
+    console.log('data from fetch slice',recipes.slice())
+    console.log('data from fetch',recipes)
+    //* รับค่าจาก function fetch แล้วแทนค่า recipes และใช้ recipesChanged ในการ render data ใหม่
     this.recipes = recipes;
     this.recipesChanged.next(this.recipes.slice());
   }
@@ -45,10 +52,11 @@ export class RecipeService {
   }
 
   addRecipe(recipe: Recipe) {
+    //* รับ list recipe เข้ามา แล้ว push ไป ที่ความหวังของหมู่บ้าน
     this.recipes.push(recipe);
     this.recipesChanged.next(this.recipes.slice());
   }
-
+  //* รับ index กับ recipe ใหม่
   updateRecipe(index: number, newRecipe: Recipe) {
     this.recipes[index] = newRecipe;
     this.recipesChanged.next(this.recipes.slice());
