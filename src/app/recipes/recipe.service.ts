@@ -7,41 +7,32 @@ import { ShoppingListService } from '../shopping-list/shopping-list.service';
 
 @Injectable()
 export class RecipeService {
-  recipesChanged = new Subject<Recipe[]>(); //? setState React
+  recipesChanged = new Subject<Recipe[]>();
 
-  //! ตัวแทนหมู่บ้าน
-  private recipes: Recipe[] = [] //? state React
   // private recipes: Recipe[] = [
   //   new Recipe(
   //     'Tasty Schnitzel',
   //     'A super-tasty Schnitzel - just awesome!',
   //     'https://upload.wikimedia.org/wikipedia/commons/7/72/Schnitzel.JPG',
-  //     [
-  //       new Ingredient('Meat', 1),
-  //       new Ingredient('French Fries', 20)
-  //     ]),
-  //   new Recipe('Big Fat Burger',
+  //     [new Ingredient('Meat', 1), new Ingredient('French Fries', 20)]
+  //   ),
+  //   new Recipe(
+  //     'Big Fat Burger',
   //     'What else you need to say?',
   //     'https://upload.wikimedia.org/wikipedia/commons/b/be/Burger_King_Angus_Bacon_%26_Cheese_Steak_Burger.jpg',
-  //     [
-  //       new Ingredient('Buns', 2),
-  //       new Ingredient('Meat', 1)
-  //     ])
+  //     [new Ingredient('Buns', 2), new Ingredient('Meat', 1)]
+  //   )
   // ];
+  private recipes: Recipe[] = [];
 
   constructor(private slService: ShoppingListService) {}
 
-  setRecipe(recipes:Recipe[]){
-    console.log('data from fetch sl',recipes.slice())
-    console.log('data from fetch',recipes)
-    //* รับค่าจาก function fetch แล้วแทนค่า recipes และใช้ recipesChanged ในการ render data ใหม่
-    this.recipes = recipes
-    this.recipesChanged.next(this.recipes);
-
+  setRecipes(recipes: Recipe[]) {
+    this.recipes = recipes;
+    this.recipesChanged.next(this.recipes.slice());
   }
 
   getRecipes() {
-
     return this.recipes.slice();
   }
 
@@ -54,13 +45,11 @@ export class RecipeService {
   }
 
   addRecipe(recipe: Recipe) {
-    //* รับ list recipe เข้ามา แล้ว push ไป ที่ความหวังของหมู่บ้าน
     this.recipes.push(recipe);
     this.recipesChanged.next(this.recipes.slice());
   }
 
   updateRecipe(index: number, newRecipe: Recipe) {
-    //* รับ index กับ recipe ใหม่
     this.recipes[index] = newRecipe;
     this.recipesChanged.next(this.recipes.slice());
   }
