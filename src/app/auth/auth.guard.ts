@@ -15,7 +15,7 @@ import { AuthService } from './auth.service';
 export class AuthGuard implements CanActivate {
   constructor(private authService: AuthService, private router: Router) {}
 
-  //* กำหนด การเข้าถึง path -> canActivate
+  //* กำหนด การเข้าถึง path -> canActivate ในนี้กำหนดด้วย การ login
   canActivate(
     route: ActivatedRouteSnapshot,
     router: RouterStateSnapshot

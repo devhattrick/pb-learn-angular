@@ -25,7 +25,7 @@ export class AuthComponent {
       return;
     }
     const email = form.value.email;  //* get input value
-    const password = form.value.password;
+    const password = form.value.password; 
 
     let authObs: Observable<AuthResponseData>;
 
